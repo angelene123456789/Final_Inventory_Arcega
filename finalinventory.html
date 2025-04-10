@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management System</title>
+    <link rel="stylesheet" href="finaldesign.css">
+    <link rel="icon" href="https://i.ibb.co/Y7Cbjcs0/IMG-20250401-235007.jpg">
+</head>
+<body>
+ 
+<div class="header">
+    <a href="https://ibb.co/Y7Cbjcs0">
+        <img src="https://i.ibb.co/Y7Cbjcs0/IMG-20250401-235007.jpg" alt="IMG-20250401-235007" class="logo">
+    </a>
+    <h1>SwiftStock</h1>
+</div>
+ 
+<div class="filter">
+    <input type="text" id="search" placeholder="Search" oninput="filterTable()">
+    <button class="add-product-button" onclick="toggleAddProduct()">Add Product</button>
+    <div class="filter-options">
+        <select id="quantityFilterType" onchange="filterByQuantity()">
+            <option value="">Quantity</option>
+            <option value="least">Least to Most</option>
+            <option value="most">Most to Least</option>
+        </select>
+        <select id="sortOrder" onchange="filterByDate()">
+            <option value="">Date Added</option>
+            <option value="asc">Oldest to Newest</option>
+            <option value="desc">Newest to Oldest</option>
+        </select>
+    </div>
+</div>
+ 
+<div class="modal" id="productModal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h3 id="modalTitle">Add Product</h3>
+        <input type="text" id="productName" placeholder="Product Name" required>
+        <input type="number" id="quantity" placeholder="Quantity" min="1" required>
+        <input type="number" id="price" placeholder="Price" min="0" step="0.01" required>
+        <input type="datetime-local" id="dateAdded" required>
+        <input type="file" id="productImage" accept="image/*" onchange="previewImage(event)">
+        <div id="imagePreviewContainer" style="margin-top: 10px;">
+            <img id="imagePreview" src="" alt="Image Preview" style="max-width: 200px; display: none;">
+        </div>
+        <div class="modal-buttons">
+            <button onclick="submitProduct()">Add Product</button>
+            <button onclick="closeModal()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<table id="inventoryTable">
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Date Added</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Product rows will be added here -->
+    </tbody>
+</table>
+    <script src="finalfunction.js"></script>
+</body>
+</html>
